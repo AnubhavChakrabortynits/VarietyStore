@@ -1,9 +1,8 @@
 import Head from 'next/head'
 import Image from 'next/image'
 import styles from '../styles/Home.module.css'
-import Navbar from '../components/Navbar'
 import Header from '../components/Header'
-import Footer from '../components/footer'
+
 
 export default function Home() {
   return (
@@ -13,9 +12,9 @@ export default function Home() {
         <meta name="description" content="ecommerce app" />
         <link rel="icon" href="/favicon.ico" />
       </Head>
-<Navbar/>
-      <div className="imagediv mx-auto" style={{height:"350px",width:"85%"}}>
-        <img style={{height:"100%",width:"100%"}} src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQNrPHlqs2IojhL0n5jYoZd-RKXrXL9kJr6XQ&usqp=CAU" alt="" />
+
+      <div className="imagediv mx-auto" style={{height:"400px",width:"100%"}}>
+        <img style={{height:"100%",width:"100%"}} src="https://images.unsplash.com/photo-1511268559489-34b624fbfcf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGhvb2RpZXN8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60 lg:h-[60vh] h-[40vh]" alt="" />
       </div>
 
 
@@ -100,7 +99,7 @@ export default function Home() {
   </div>
 </section>
 
-      <Footer/>
+    
     </div>
   )
 }
