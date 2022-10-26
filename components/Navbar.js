@@ -2,7 +2,7 @@ import React, { useRef } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
-import {AiFillCloseCircle,AiFillPlusCircle,AiFillMinusCircle} from 'react-icons/ai';
+import {AiFillCloseCircle,AiFillPlusCircle,AiFillMinusCircle,AiFillDelete} from 'react-icons/ai';
 import {BsBagCheckFill} from 'react-icons/bs'
 
 
@@ -117,7 +117,11 @@ export default function Navbar() {
 
 
     </ol>
-    <button className="flex mx-auto mt-16 text-white  bg-purple-500 border-0 py-2 px-8 focus:outline-none hover:bg-purple-600 rounded text-lg items-center"><BsBagCheckFill/>Checkout</button>
+    <div className="flex justify-center items-center text-md gap-2">
+    <button className="flex mx-auto mt-16 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center"><BsBagCheckFill/>Checkout</button>
+    <button className="flex mx-auto mt-16 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center"><AiFillDelete/>Clear</button>
+    </div>
+
 </div>
     
     
