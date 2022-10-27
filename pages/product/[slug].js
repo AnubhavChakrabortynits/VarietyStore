@@ -1,6 +1,26 @@
 import React from 'react'
+import { useState } from 'react'
+import { useRouter } from 'next/router'
 
 export default function post() {
+
+  const router=useRouter()
+  const checkservice=async()=>{
+     let pins=await fetch('http://localhost:3000/api/pincode')
+     let pindata=await pins.json();
+   
+     if(pindata?.includes(parseInt(pin))){
+      setService(true)
+     }
+     else{
+      setService(false);
+     }
+     
+    
+  }
+
+  const [pin,setPin]=useState('')
+  const [service,setService]=useState(null)
   return (
 <>
 <section class="text-gray-600 body-font overflow-hidden">
@@ -74,12 +94,22 @@ export default function post() {
         </div>
         <div class="flex">
           <span class="title-font font-medium text-2xl text-gray-900">$58.00</span>
-          <button class="flex ml-5 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded">Add to Cart</button>
+          <button class="flex ml-5 text-white bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded md:text-xsm" >Add to Cart</button>
+          <button class="flex ml-5 text-white bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded md:text-xsm">Buy Now</button>
           <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
               <path d="M20.84 4.61a5.5 5.5 0 00-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 00-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 000-7.78z"></path>
             </svg>
           </button>
+        </div>
+
+        <div className="pin mt-6 flex space-x-2 test-sm">
+          <input value={pin} onChange={(e)=>{setPin(e.target.value)}} type="text" className='px-2 border-2 border-purple-100 rounded-md' placeholder='pincode' />
+          <button className='flex ml-5 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded' onClick={checkservice}>check</button>
+        </div>
+        <div className={`pinmessage text-sm ${service==true?"text-green-400":"text-red-400"} `}>
+        {service==true?'Yay,Delivery is available for this pincode':'Sorry,We do not deliver to this pincode'}
+
         </div>
       </div>
     </div>

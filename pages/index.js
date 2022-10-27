@@ -13,7 +13,7 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
 
-      <div className="imagediv mx-auto" style={{height:"400px",width:"100%"}}>
+      <div className="imagediv mx-auto mt-1" style={{height:"400px",width:"100%"}}>
         <img style={{height:"100%",width:"100%"}} src="https://images.unsplash.com/photo-1511268559489-34b624fbfcf5?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MTR8fGhvb2RpZXN8ZW58MHwwfDB8fA%3D%3D&auto=format&fit=crop&w=600&q=60 lg:h-[60vh] h-[40vh]" alt="" />
       </div>
 
