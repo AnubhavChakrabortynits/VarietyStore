@@ -6,8 +6,9 @@ import {AiFillCloseCircle,AiFillPlusCircle,AiFillMinusCircle,AiFillDelete} from 
 import {BsBagCheckFill} from 'react-icons/bs'
 
 
-export default function Navbar() {
+export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
 
+  
   const toggleCart=()=>{
 
     if(ref.current.classList.contains('translate-x-full')){
@@ -48,78 +49,33 @@ export default function Navbar() {
 
 
     <ol className='list-decimal font-semibold text-sm'>
-      <li>
+    {Object.keys(cart).length==0 && <div className='my-4 text-center'>No items in the cart</div>}
+      {Object.keys(cart)?.map((item)=>{
+        return <li key={item}>
       <div className="item flex my-5">
 
-      <div className='text-sm  w-2/3 font-semibold'>Get All You Want Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque alias autem non! </div>
+      <div className='text-sm  w-2/3 font-semibold'>{cart[item].name} </div>
         <div className='w-1/3  flex items-center justify-center font-semibold text-lg space-x-2'>
-          <AiFillPlusCircle className='cursor-pointer text-purple-500'/> <span className='space-x-2'>1</span> <AiFillMinusCircle className='text-purple-500 cursor-pointer' />
+          <AiFillPlusCircle onClick={()=>{addtoCart(item,1,cart[item].price,cart[item].name,cart[item].size,cart[item].variant)}} className='cursor-pointer text-purple-500'/> <span className='space-x-2'>{cart[item].qty}</span> <AiFillMinusCircle onClick={()=>{
+            removecart(item,1,cart[item].price,cart[item].name,cart[item].size,cart[item].variant)
+          }} className='text-purple-500 cursor-pointer' />
         </div>
 
       </div>
         
       </li>
-      <li>
-      <div className="item flex my-5">
-
-      <div className='text-sm  w-2/3 font-semibold'>Get All You Want Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque alias autem non! </div>
-        <div className='w-1/3  flex items-center justify-center font-semibold text-lg space-x-2'>
-          <AiFillPlusCircle className='cursor-pointer text-purple-500'/> <span className='space-x-2'>1</span> <AiFillMinusCircle className='text-purple-500 cursor-pointer' />
-        </div>
-
-      </div>
-        
-      </li>
-      <li>
-      <div className="item flex my-5">
-
-      <div className='text-sm  w-2/3 font-semibold'>Get All You Want Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque alias autem non! </div>
-        <div className='w-1/3  flex items-center justify-center font-semibold text-lg space-x-2'>
-          <AiFillPlusCircle className='cursor-pointer text-purple-500'/> <span className='space-x-2'>1</span> <AiFillMinusCircle className='text-purple-500 cursor-pointer' />
-        </div>
-
-      </div>
-        
-      </li>
-      <li>
-      <div className="item flex my-5">
-
-      <div className='text-sm  w-2/3 font-semibold'>Get All You Want Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque alias autem non! </div>
-        <div className='w-1/3  flex items-center justify-center font-semibold text-lg space-x-2'>
-          <AiFillPlusCircle className='cursor-pointer text-purple-500'/> <span className='space-x-2'>1</span> <AiFillMinusCircle className='text-purple-500 cursor-pointer' />
-        </div>
-
-      </div>
-        
-      </li>
-      <li>
-      <div className="item flex my-5">
-
-      <div className='text-sm  w-2/3 font-semibold'>Get All You Want Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque alias autem non! </div>
-        <div className='w-1/3  flex items-center justify-center font-semibold text-lg space-x-2'>
-          <AiFillPlusCircle className='cursor-pointer text-purple-500'/> <span className='space-x-2'>1</span> <AiFillMinusCircle className='text-purple-500 cursor-pointer' />
-        </div>
-
-      </div>
-        
-      </li>
-      <li>
-      <div className="item flex my-5">
-
-      <div className='text-sm  w-2/3 font-semibold'>Get All You Want Lorem ipsum dolor sit amet consectetur, adipisicing elit. Itaque alias autem non! </div>
-        <div className='w-1/3  flex items-center justify-center font-semibold text-lg space-x-2'>
-          <AiFillPlusCircle className='cursor-pointer text-purple-500'/> <span className='space-x-2'>1</span> <AiFillMinusCircle className='text-purple-500 cursor-pointer' />
-        </div>
-
-      </div>
-        
-      </li>
-
+      })
+      }
+    
+    
+    
+   
+   
 
     </ol>
     <div className="flex justify-center items-center text-md gap-2">
-    <button className="flex mx-auto mt-16 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center"><BsBagCheckFill/>Checkout</button>
-    <button className="flex mx-auto mt-16 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center"><AiFillDelete/>Clear</button>
+    <button className="flex mx-auto mt-16 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center" onClick={addtoCart}><BsBagCheckFill/>Checkout</button>
+    <button className="flex mx-auto mt-16 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center" onClick={clearcart}><AiFillDelete/>Clear</button>
     </div>
 
 </div>
