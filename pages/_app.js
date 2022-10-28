@@ -27,6 +27,7 @@ newCart[itemcode]={qty:1,price,name,size,variant}
       subt+=((cartobj[Object.keys[i]]?.price)*(cartobj[Object.keys[i]]?.qty))
   }
   setSubTotal(subt)
+  localStorage.setItem('subt',String(subt))
 }
 
   const clearCart=(cartobj)=>{
@@ -52,13 +53,14 @@ useEffect(()=>{
   try{
     if(localStorage.getItem('cart')){
   setCart(JSON.parse(localStorage.getItem('cart')))
+  setSubTotal(parseInt(localStorage.getItem('subt')))
     }
   }
   catch(e){
     console.log(e)
     localStorage.clear()
   }
-},[])
+},[cart,subTotal])
   return <>
 <Navbar cart={cart} addtoCart={addtoCart} removecart={removeCartItem} clearcart={clearCart} subtotal={subTotal} />
 <Component cart={cart} addtoCart={addtoCart} removecart={removeCartItem} clearcart={clearCart} subtotal={subTotal} {...pageProps} />
