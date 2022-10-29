@@ -9,12 +9,12 @@ const ProductSchema=new mongoose.Schema({
     desc:{type:String,required:true},
     category:{type:String,required:true},
     img:{type:String,required:true},
-    size:{type:Number},
-    color:{type:Number},
+    size:{type:String},
+    color:{type:String},
     price:{type:Number,required:true},
     availableQ:{type:Number,required:true},
 
 
 },{timestamps:true})
-
+mongoose.models={}
 export default mongoose.model("Product",ProductSchema)
