@@ -11,7 +11,7 @@ export default function order() {
         <h1 class="text-gray-900 text-3xl title-font font-medium mb-4">Order ID=#221186</h1>
        
         <p class="leading-relaxed mb-4">Your Order Has Been Succesfully Placed</p>
-        <div class="flex border-t border-gray-200 py-2">
+        <div class="flex border-t border-gray-200 py-2 font-bold">
           <span class="text-purple-500">Item</span>
           <span class="ml-auto text-purple-500">Quantity</span>
           <span class="ml-auto text-purple-500">Price</span>
