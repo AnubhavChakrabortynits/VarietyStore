@@ -4,6 +4,7 @@ import Link from 'next/link'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {AiFillCloseCircle,AiFillPlusCircle,AiFillMinusCircle,AiFillDelete} from 'react-icons/ai';
 import {BsBagCheckFill} from 'react-icons/bs'
+import {MdAccountCircle} from 'react-icons/md'
 
 
 export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
@@ -38,9 +39,10 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
       </ul>
     </div>
 
-    <div className="cart absolute right-0 mx-5 top-4 cursor-pointer " onClick={toggleCart}>
+    <div className="cart absolute right-0 mx-5 top-4 cursor-pointer flex gap-2" >
+<Link href={'/login'}><a> <MdAccountCircle className='md:text-3xl text-xl'/></a></Link>   
 
-     <AiOutlineShoppingCart className='md:text-3xl text-xl' />
+     <AiOutlineShoppingCart className='md:text-3xl text-xl' onClick={toggleCart} />
     </div>
 
 <div ref={ref} style={{minHeight:"100vh"}} className=" w-72 sidebar bg-purple-100 absolute top-0 right-0 cursor-pointer text-2xl transform transition-transform translate-x-full p-10">
