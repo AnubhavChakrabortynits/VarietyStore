@@ -1,4 +1,4 @@
-import React, { useRef } from 'react'
+import React, { useRef} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
@@ -20,7 +20,7 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
       }
 
     }
-  
+ 
 
   const ref=useRef()
   return (
@@ -75,7 +75,7 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
     </ol>
     <div className="total font-semibold my-1 text-sm text-center">SubTotal: {subtotal}$</div>
     <div className="flex justify-center items-center text-md gap-2">
-   <Link href={'/checkout'}><a className="flex mx-auto mt-2 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center" onClick={addtoCart}><BsBagCheckFill/>Checkout</a></Link> 
+   <Link href={'/checkout'}><a className="flex mx-auto mt-2 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center"><BsBagCheckFill/>Checkout</a></Link> 
     <button className="flex mx-auto mt-2 text-white  bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded text-sm items-center" onClick={clearcart}><AiFillDelete/>Clear</button>
     </div>
 

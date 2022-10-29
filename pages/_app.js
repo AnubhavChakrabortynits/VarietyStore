@@ -16,7 +16,7 @@ function MyApp({ Component, pageProps }) {
 newCart[itemcode]={qty:1,price,name,size,variant}
   }
   setCart(newCart)
-  saveCart(cart)
+  saveCart(newCart)
   
   }
 
@@ -44,7 +44,7 @@ newCart[itemcode]={qty:1,price,name,size,variant}
       delete newCart[itemcode]
     }
     setCart(newCart)
-    saveCart(cart)
+    saveCart(newCart)
     
   }
 
@@ -55,12 +55,17 @@ useEffect(()=>{
   setCart(JSON.parse(localStorage.getItem('cart')))
   setSubTotal(parseInt(localStorage.getItem('subt')))
     }
+    else{
+      localStorage.setItem('subt',String(0))
+      setSubTotal(0)
+    }
   }
   catch(e){
     console.log(e)
     localStorage.clear()
+
   }
-},[cart,subTotal])
+},[])
   return <>
 <Navbar cart={cart} addtoCart={addtoCart} removecart={removeCartItem} clearcart={clearCart} subtotal={subTotal} />
 <Component cart={cart} addtoCart={addtoCart} removecart={removeCartItem} clearcart={clearCart} subtotal={subTotal} {...pageProps} />

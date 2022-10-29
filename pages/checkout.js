@@ -29,7 +29,7 @@ export default function checkout({cart,clearcart,addtoCart,subtotal,removecart})
 
       
       </div>
-      <div className="flex mb-6 w-full flex-col w-[90vw] mx-auto ">
+      <div className="flex mb-6 flex-col w-[90vw] mx-auto ">
      
       <div className="address w-full flex flex-col items-start px-6"> 
        
