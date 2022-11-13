@@ -10,7 +10,7 @@ function MyApp({ Component, pageProps }) {
   const addtoCart=(itemcode,qty,price,name,size,variant)=>{
   let newCart=cart;
   if(itemcode in cart){
-    newCart[itemcode].qty=cart[itemcode].qty+qty;
+    newCart[itemcode].qty=newCart[itemcode].qty+qty;
   }
   else{
 newCart[itemcode]={qty:1,price,name,size,variant}
@@ -23,9 +23,11 @@ newCart[itemcode]={qty:1,price,name,size,variant}
   const saveCart=(cartobj)=>{
     localStorage.setItem('cart',JSON.stringify(cartobj))
     let subt=0
-    for(let i=0;i<Object.keys(cartobj).length;i++){
-      subt+=((cartobj[Object.keys[i]]?.price)*(cartobj[Object.keys[i]]?.qty))
+    for(let i=1;i<=Object.keys(cartobj).length;i++){
+ 
+      subt+=((cartobj[i].price)*(cartobj[i].qty))
   }
+
   setSubTotal(subt)
   localStorage.setItem('subt',String(subt))
 }
@@ -38,7 +40,7 @@ newCart[itemcode]={qty:1,price,name,size,variant}
   const removeCartItem=(itemcode,qty,price,name,size,variant)=>{
     let newCart=cart;
     if(itemcode in cart){
-      newCart[itemcode].qty=cart[itemcode].qty-qty;
+      newCart[itemcode].qty=newCart[itemcode].qty-qty;
     }
     if(newCart[itemcode].qty<=0){
       delete newCart[itemcode]
@@ -52,6 +54,7 @@ useEffect(()=>{
  
   try{
     if(localStorage.getItem('cart')){
+      console.log(localStorage.getItem('cart'))
   setCart(JSON.parse(localStorage.getItem('cart')))
   setSubTotal(parseInt(localStorage.getItem('subt')))
     }
