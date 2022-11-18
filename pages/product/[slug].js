@@ -22,8 +22,15 @@ export default function post({cart,addtoCart,removecart,clearcart,subtotal,produ
     
   }
 
+  const refreshVariant=(newcolor,newsize)=>{
+let url=`http://localhost:3000/product/${variants[newcolor][newsize]['slug']}`
+window.location=url
+  }
+
   const [pin,setPin]=useState('')
   const [service,setService]=useState(null)
+  const [color,setColor]=useState(product.color)
+  const [size,setSize]=useState(product.size)
   return (
 <>
 <section class="text-gray-600 body-font overflow-hidden">
@@ -74,18 +81,27 @@ export default function post({cart,addtoCart,removecart,clearcart,subtotal,produ
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">
             <span class="mr-3">Color</span>
-            <button class="border-2 border-gray-300 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button class="border-2 border-gray-300 ml-1 bg-gray-700 rounded-full w-6 h-6 focus:outline-none"></button>
-            <button class="border-2 border-gray-300 ml-1 bg-purple-500 rounded-full w-6 h-6 focus:outline-none"></button>
+            {console.log(variants)}
+            {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(size)? <button onClick={(e)=>{refreshVariant('white',size)}} className={`border-2 border-gray-300 bg-white mx-1 rounded-full w-6 h-6 focus:outline-none ${color=='white'?'border-black':'border-gray-300'}`}></button>:""}
+            {Object.keys(variants).includes('red') && Object.keys(variants['red']).includes(size)? <button onClick={(e)=>{refreshVariant('red',size)}} className={`border-2 border-gray-300 bg-red-500 mx-1 rounded-full w-6 h-6 focus:outline-none ${color=='red'?'border-black':'border-red-300'}`}></button>:""}
+            {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(size)? <button onClick={(e)=>{refreshVariant('blue',size)}} className={`border-2 border-gray-300 bg-blue-500 mx-1 rounded-full w-6 h-6 focus:outline-none ${color=='blue'?'border-black':'border-gray-300'}`}></button>:""}
+            {Object.keys(variants).includes('yellow') && Object.keys(variants['yellow']).includes(size)? <button onClick={(e)=>{refreshVariant('yellow',size)}} className={`border-2 border-yellow-300 mx-1 rounded-full bg-yellow-500 w-6 h-6 focus:outline-none ${color=='yellow'?'border-black':'border-gray-300'}`}></button>:""}
+            {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(size)? <button onClick={(e)=>{refreshVariant('green',size)}} className={`border-2 border-green-300 bg-green-500 rounded-full w-6 h-6 focus:outline-none ${color=='green'?'border-black':'border-gray-300'}`}></button>:""}
+            {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size)? <button onClick={(e)=>{refreshVariant('black',size)}} className={`border-2 border-black bg-black rounded-full w-6 h-6 focus:outline-none ${color=='black'?'border-black':'border-gray-300'}`}></button>:""}
+            
           </div>
           <div class="flex ml-6 items-center">
             <span class="mr-3">Size</span>
             <div class="relative">
-              <select class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500 text-base pl-3 pr-10">
-                <option>SM</option>
-                <option>M</option>
-                <option>L</option>
-                <option>XL</option>
+              <select value={size} onChange={(e)=>{
+                refreshVariant(color,e.target.value)
+              }} class="rounded border appearance-none border-gray-300 py-2 focus:outline-none focus:ring-2 focus:ring-purple-200 focus:border-purple-500 text-base pl-3 pr-10">
+               {Object.keys(variants[color]).includes('S') &&   <option value={'S'}>S</option>}
+               {Object.keys(variants[color]).includes('M') &&   <option value={'M'}>M</option>}
+               {Object.keys(variants[color]).includes('L') &&   <option value={'L'}>L</option>}
+               {Object.keys(variants[color]).includes('XL') &&   <option value={'XL'}>XL</option>}
+               {Object.keys(variants[color]).includes('XXL') &&   <option value={'XXL'}>XXL</option>}
+                
               </select>
               <span class="absolute right-0 top-0 h-full w-10 text-center text-gray-600 pointer-events-none flex items-center justify-center">
                 <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4" viewBox="0 0 24 24">
@@ -134,11 +150,11 @@ let variants=await Product.find({title: product.title})
 let colorSizeSlug={}
 for(let item of variants){
   if(Object.keys(colorSizeSlug).includes(item.color)){
-    colorSizeSlug[item.color][item.size]={slug: item.size}
+    colorSizeSlug[item.color][item.size]={slug: item.slug}
   }
   else{
     colorSizeSlug[item.color]={}
-    colorSizeSlug[item.color][item.size]={slug: item.size}
+    colorSizeSlug[item.color][item.size]={slug: item.slug}
 
   }
 }
