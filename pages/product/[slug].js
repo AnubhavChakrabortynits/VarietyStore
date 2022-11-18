@@ -2,7 +2,10 @@ import React from 'react'
 import { useState } from 'react'
 import { useRouter } from 'next/router'
 
-export default function post({cart,addtoCart,removecart,clearcart,subtotal}) {
+import mongoose, { mongo } from 'mongoose'
+import Product from '../../modals/Product'
+
+export default function post({cart,addtoCart,removecart,clearcart,subtotal,product,variants}) {
 
   const router=useRouter()
   const checkservice=async()=>{
@@ -117,4 +120,31 @@ export default function post({cart,addtoCart,removecart,clearcart,subtotal}) {
 </section>
 </>
   )
+}
+
+export async function getServerSideProps(context){
+
+  if(!mongoose.connections[0].readyState){
+    await mongoose.connect("mongodb://localhost:27017/varietystore",{ useNewUrlParser: true,
+    useUnifiedTopology: true})
+}
+
+let product=await Product.findOne({slug: context.query.slug})
+let variants=await Product.find({title: product.title})
+let colorSizeSlug={}
+for(let item of variants){
+  if(Object.keys(colorSizeSlug).includes(item.color)){
+    colorSizeSlug[item.color][item.size]={slug: item.size}
+  }
+  else{
+    colorSizeSlug[item.color]={}
+    colorSizeSlug[item.color][item.size]={slug: item.size}
+
+  }
+}
+return {
+  props: {variants: JSON.parse(JSON.stringify(colorSizeSlug)),product: JSON.parse(JSON.stringify(product))}
+}
+
+
 }
