@@ -31,12 +31,12 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
 <img src='https://images-platform.99static.com/iIhd3I11LfUA3pt-TGCdCb0mpbg=/500x500/top/smart/99designs-contests-attachments/48/48489/attachment_48489540' style={{height:"70px"}}/>
     </div>
     <div className="nav py-2">
-      <ul className='flex items-center space-x-3 font-bold md:text-xl'>
-        <li  className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/tshirts'}><span>T-Shirts</span></Link></li>
-        <li className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/hoodies'}><a>Hoodies</a></Link></li>
-        <li className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/mugs'}><a>Mugs</a></Link></li>
-        <li className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/'}><a>Accessories</a></Link></li>
-        <li className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/stickers'}><a>Stickers</a></Link></li> 
+      <ul className='flex items-center space-x-2 font-bold md:text-xl sm:text-sm'>
+        <li  className='relative before:absolute before:left-0 before:rounded-[3px]   before:top-0 before:rounded-[3px] py-2 px-1 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/tshirts'}><span>T-Shirts</span></Link></li>
+        <li className='relative before:absolute before:left-0 before:rounded-[3px] py-2 px-1  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/hoodies'}><a>Hoodies</a></Link></li>
+        <li className='relative before:absolute before:left-0 before:rounded-[3px] py-2 px-1 before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/mugs'}><a>Mugs</a></Link></li>
+        <li className='relative before:absolute before:left-0 before:rounded-[3px] py-2 px-1 before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/'}><a>Accessories</a></Link></li>
+        <li className='relative before:absolute before:left-0 before:rounded-[3px] py-2   before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/stickers'}><a>Stickers</a></Link></li> 
       </ul>
     </div>
 
@@ -46,7 +46,7 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
      <AiOutlineShoppingCart className='md:text-3xl text-xl' onClick={toggleCart} />
     </div>
 
-<div ref={ref} style={{minHeight:"100vh"}} className=" w-72 sidebar bg-purple-100 absolute top-0 right-0 cursor-pointer text-2xl transform transition-transform translate-x-full p-10">
+<div ref={ref} style={{minHeight:"100vh"}} className=" w-72 overflow-y-scroll sidebar bg-purple-100 absolute top-0 right-0 cursor-pointer text-2xl transform transition-transform translate-x-full p-10">
 <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
     <div onClick={toggleCart} className="absolute  w-2/3  cursor-pointer text-2xl text-purple-500 absolute top-2 left-2" ><AiFillCloseCircle/></div>
 
