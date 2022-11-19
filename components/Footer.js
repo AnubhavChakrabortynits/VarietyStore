@@ -12,11 +12,45 @@ export default function Footer() {
       <img src="https://images-platform.99static.com/iIhd3I11LfUA3pt-TGCdCb0mpbg=/500x500/top/smart/99designs-contests-attachments/48/48489/attachment_48489540" alt="" style={{maxHeight:"70px"}} /> 
       </a>
       </Link>
-      <p className="mt-2 text-sm text-gray-500 px-4">Air plant banjo lyft occupy retro adaptogen indego</p>
+      <p className="mt-2 text-sm text-gray-500 px-4">Variety is what matters</p>
     </div>
     <div className="flex-grow flex flex-wrap md:pl-20 -mb-10 md:mt-0 mt-10 md:text-left text-center">
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Shop</h2>
+        <nav className="list-none mb-10">
+          <li>
+            <a className="text-gray-600 hover:text-gray-800 ">Tshirts</a>
+          </li>
+          <li>
+            <a className="text-gray-600 hover:text-gray-800">Hoodies</a>
+          </li>
+          <li>
+            <a className="text-gray-600 hover:text-gray-800">Mugs</a>
+          </li>
+          <li>
+            <a className="text-gray-600 hover:text-gray-800">Stickers</a>
+          </li>
+        </nav>
+      </div>
+      <div className="lg:w-1/4 md:w-1/2 w-full px-4">
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">About</h2>
+        <nav className="list-none mb-10">
+          <li>
+            <a className="text-gray-600 hover:text-gray-800">First Link</a>
+          </li>
+          <li>
+            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
+          </li>
+          <li>
+            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
+          </li>
+          <li>
+            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
+          </li>
+        </nav>
+      </div>
+      <div className="lg:w-1/4 md:w-1/2 w-full px-4 my-2">
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Policies</h2>
         <nav className="list-none mb-10">
           <li>
             <a className="text-gray-600 hover:text-gray-800">First Link</a>
@@ -33,41 +67,7 @@ export default function Footer() {
         </nav>
       </div>
       <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-        <nav className="list-none mb-10">
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-          </li>
-        </nav>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
-        <nav className="list-none mb-10">
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">First Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Second Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Third Link</a>
-          </li>
-          <li>
-            <a className="text-gray-600 hover:text-gray-800">Fourth Link</a>
-          </li>
-        </nav>
-      </div>
-      <div className="lg:w-1/4 md:w-1/2 w-full px-4">
-        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">CATEGORIES</h2>
+        <h2 className="title-font font-medium text-gray-900 tracking-widest text-sm mb-3">Contact</h2>
         <nav className="list-none mb-10">
           <li>
             <a className="text-gray-600 hover:text-gray-800">First Link</a>
@@ -87,8 +87,8 @@ export default function Footer() {
   </div>
   <div className="bg-gray-100">
     <div className="container mx-auto py-4 px-5 flex flex-wrap flex-col sm:flex-row">
-      <p className="text-gray-500 text-sm text-center sm:text-left">© 2020 Tailblocks —
-        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">@knyttneve</a>
+      <p className="text-gray-500 text-sm text-center sm:text-left">© 2022 VarietyStore — 
+        <a href="https://twitter.com/knyttneve" rel="noopener noreferrer" className="text-gray-600 ml-1" target="_blank">All Rights Reserved</a>
       </p>
       <span className="inline-flex sm:ml-auto sm:mt-0 mt-2 justify-center sm:justify-start">
         <a className="text-gray-500">

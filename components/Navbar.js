@@ -7,6 +7,7 @@ import {BsBagCheckFill} from 'react-icons/bs'
 import {MdAccountCircle} from 'react-icons/md'
 
 
+
 export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
 
   
@@ -31,11 +32,11 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
     </div>
     <div className="nav py-2">
       <ul className='flex items-center space-x-3 font-bold md:text-xl'>
-        <li><Link href={'/tshirts'}><a>T-Shirts</a></Link></li>
-        <li><Link href={'/hoodies'}><a>Hoodies</a></Link></li>
-        <li><Link href={'/mugs'}><a>Mugs</a></Link></li>
-        <li><Link href={'/'}><a>Accessories</a></Link></li>
-        <li><Link href={'/stickers'}><a>Stickers</a></Link></li> 
+        <li  className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/tshirts'}><span>T-Shirts</span></Link></li>
+        <li className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/hoodies'}><a>Hoodies</a></Link></li>
+        <li className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/mugs'}><a>Mugs</a></Link></li>
+        <li className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/'}><a>Accessories</a></Link></li>
+        <li className='relative before:absolute before:left-0  before:top-0 before:z-[-5] before:scale-x-0 before:hover:scale-x-100 hover:text-white before:h-full before:w-full before:bg-black before:content-[""] before:duration-300 '><Link href={'/stickers'}><a>Stickers</a></Link></li> 
       </ul>
     </div>
 
@@ -53,11 +54,11 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
     <ol className='list-decimal font-semibold text-sm'>
     {Object.keys(cart).length==0 && <div className='my-4 text-center'>No items in the cart</div>}
       {Object.keys(cart)?.map((item)=>{
-        console.log(cart[item],9999)
+      console.log(cart[item])
         return <li key={item}>
       <div className="item flex my-5">
 
-      <div className='text-sm  w-2/3 font-semibold'>{cart[item].name} </div>
+      <div className='text-sm  w-2/3 font-semibold'>{cart[item].name}-{cart[item].size}-<button className={cart[item].variant=='black'?`h-3 w-3 mt-2 ml-1 rounded-full bg-black`:`h-3 w-3 mt-2 ml-1 rounded-full bg-${cart[item].variant}-500`}></button> </div>
         <div className='w-1/3  flex items-center justify-center font-semibold text-lg space-x-2'>
           <AiFillPlusCircle onClick={()=>{addtoCart(item,1,cart[item].price,cart[item].name,cart[item].size,cart[item].variant)}} className='cursor-pointer text-purple-500'/> <span className='space-x-2'>{cart[item]?.qty}</span> <AiFillMinusCircle onClick={()=>{
             removecart(item,1,cart[item].price,cart[item].name,cart[item].size,cart[item].variant)
