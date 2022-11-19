@@ -3,7 +3,7 @@ import Link from 'next/link'
 import Product from '../modals/Product';
 import mongoose, { mongo } from "mongoose";
 function tshirts({product}) {
-  console.log(product)
+
   return (
     <div>
       <section class="text-gray-600 body-font lg:mx-16 mx-6">
@@ -24,20 +24,20 @@ function tshirts({product}) {
           <h2 class="text-gray-900 title-font text-lg font-medium">{product[item].title}</h2>
           <p class="mt-1">${product[item].price}</p>
           <div className='flex pl-2 items-center bg-gray-100'>
-          {console.log(product[item].size[0])}
-          {product[item].size[0].includes('S')?<p className='font-semibold ml-0 mr-4'>S</p>:""}
-          {product[item].size[0].includes('M')?<p className='font-semibold mr-4'>M</p>:""}
-          {product[item].size[0].includes('L')?<p className='font-semibold mr-4'>L</p>:""}
-          {product[item].size[0].includes('XL')?<p className='font-semibold mr-4'>XL</p>:""}
-          {product[item].size[0].includes('XXL')?<p className='font-semibold mr-4'>XXL</p>:""}
+          
+          {product[item].size.includes('S')?<p className='font-semibold ml-0 mr-4'>S</p>:""}
+          {product[item].size.includes('M')?<p className='font-semibold mr-4'>M</p>:""}
+          {product[item].size.includes('L')?<p className='font-semibold mr-4'>L</p>:""}
+          {product[item].size.includes('XL')?<p className='font-semibold mr-4'>XL</p>:""}
+          {product[item].size.includes('XXL')?<p className='font-semibold mr-4'>XXL</p>:""}
           </div>
           <div className='flex pl-2 items-center mt-2'>
-            {product[item].color[0].includes('red')?<p className='w-4 h-4 rounded-full ml-0 mr-2 bg-red-500'></p>:""}
-            {product[item].color[0].includes('blue')?<p className='w-4 h-4 rounded-full mr-2 bg-blue-500'></p>:""}
-            {product[item].color[0].includes('green')?<p className='w-4 h-4 rounded-full mr-2 bg-green-500'></p>:""}
-            {product[item].color[0].includes('yellow')?<p className='w-4 h-4 rounded-full mr-2 bg-yellow-500'></p>:""}
-            {product[item].color[0].includes('white')?<p className='w-4 h-4 rounded-full mr-2 bg-white-500'></p>:""}
-            {product[item].color[0].includes('black')?<p className='w-4 h-4 rounded-full mr-2 bg-black'></p>:""}
+            {product[item].color.includes('red')?<p className='w-4 h-4 rounded-full ml-0 mr-2 bg-red-500'></p>:""}
+            {product[item].color.includes('blue')?<p className='w-4 h-4 rounded-full mr-2 bg-blue-500'></p>:""}
+            {product[item].color.includes('green')?<p className='w-4 h-4 rounded-full mr-2 bg-green-500'></p>:""}
+            {product[item].color.includes('yellow')?<p className='w-4 h-4 rounded-full mr-2 bg-yellow-500'></p>:""}
+            {product[item].color.includes('white')?<p className='w-4 h-4 rounded-full mr-2 bg-white-500'></p>:""}
+            {product[item].color.includes('black')?<p className='w-4 h-4 rounded-full mr-2 bg-black'></p>:""}
           </div>
         </div>
       </div>
@@ -74,9 +74,9 @@ let product=await Product.find({category:"tshirt"})
 let tshirts={}
 for(let products of product){
     if(products.title in tshirts){
-              if(!tshirts[products.title].color.includes(products[item].color) &&availableQ>0){
-                      tshirts[products.title].color.push(products[item].color)
-                      tshirts[products.title].size.push(products[item].size)
+              if(!tshirts[products.title].color.includes(products.color) &&products.availableQ>0){
+                      tshirts[products.title].color.push(products.color)
+                      tshirts[products.title].size.push(products.size)
               }
     }
     else{

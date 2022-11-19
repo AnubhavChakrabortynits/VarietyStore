@@ -30,7 +30,7 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
 <img src='https://images-platform.99static.com/iIhd3I11LfUA3pt-TGCdCb0mpbg=/500x500/top/smart/99designs-contests-attachments/48/48489/attachment_48489540' style={{height:"70px"}}/>
     </div>
     <div className="nav py-2">
-      <ul className='flex items-center space-x-2 font-bold md:text-xl'>
+      <ul className='flex items-center space-x-3 font-bold md:text-xl'>
         <li><Link href={'/tshirts'}><a>T-Shirts</a></Link></li>
         <li><Link href={'/hoodies'}><a>Hoodies</a></Link></li>
         <li><Link href={'/mugs'}><a>Mugs</a></Link></li>
@@ -53,6 +53,7 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
     <ol className='list-decimal font-semibold text-sm'>
     {Object.keys(cart).length==0 && <div className='my-4 text-center'>No items in the cart</div>}
       {Object.keys(cart)?.map((item)=>{
+        console.log(cart[item],9999)
         return <li key={item}>
       <div className="item flex my-5">
 

@@ -31,6 +31,7 @@ window.location=url
   const [service,setService]=useState(null)
   const [color,setColor]=useState(product.color)
   const [size,setSize]=useState(product.size)
+  console.log(color)
   return (
 <>
 <section class="text-gray-600 body-font overflow-hidden">
@@ -39,7 +40,7 @@ window.location=url
       <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-1/2 sm:px-24 px-2 object-cover object-center rounded" src="https://tse2.mm.bing.net/th?id=OIP.6eAXGUhHMLWoVC9d1l5GUQHaJT&pid=Api&P=0"/>
       <div class="lg:w-1/2 w-full lg:pl-10 lg:py-6 mt-6 lg:mt-0">
         <h2 class="text-sm title-font text-gray-500 tracking-widest">BRAND NAME</h2>
-        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">The Catcher in the Rye</h1>
+        <h1 class="text-gray-900 text-3xl title-font font-medium mb-1">{product.title}</h1>
         <div class="flex mb-4">
           <span class="flex items-center">
             <svg fill="currentColor" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 text-purple-500" viewBox="0 0 24 24">
@@ -77,7 +78,7 @@ window.location=url
             </a>
           </span>
         </div>
-        <p class="leading-relaxed">Fam locavore kickstarter distillery. Mixtape chillwave tumeric sriracha taximy chia microdosing tilde DIY. XOXO fam indxgo juiceramps cornhole raw denim forage brooklyn. Everyday carry +1 seitan poutine tumeric. Gastropub blue bottle austin listicle pour-over, neutra jean shorts keytar banjo tattooed umami cardigan.</p>
+        <p class="leading-relaxed">{product.desc}</p>
         <div class="flex mt-6 items-center pb-5 border-b-2 border-gray-100 mb-5">
           <div class="flex">
             <span class="mr-3">Color</span>
@@ -85,9 +86,9 @@ window.location=url
             {Object.keys(variants).includes('white') && Object.keys(variants['white']).includes(size)? <button onClick={(e)=>{refreshVariant('white',size)}} className={`border-2 border-gray-300 bg-white mx-1 rounded-full w-6 h-6 focus:outline-none ${color=='white'?'border-black':'border-gray-300'}`}></button>:""}
             {Object.keys(variants).includes('red') && Object.keys(variants['red']).includes(size)? <button onClick={(e)=>{refreshVariant('red',size)}} className={`border-2 border-gray-300 bg-red-500 mx-1 rounded-full w-6 h-6 focus:outline-none ${color=='red'?'border-black':'border-red-300'}`}></button>:""}
             {Object.keys(variants).includes('blue') && Object.keys(variants['blue']).includes(size)? <button onClick={(e)=>{refreshVariant('blue',size)}} className={`border-2 border-gray-300 bg-blue-500 mx-1 rounded-full w-6 h-6 focus:outline-none ${color=='blue'?'border-black':'border-gray-300'}`}></button>:""}
-            {Object.keys(variants).includes('yellow') && Object.keys(variants['yellow']).includes(size)? <button onClick={(e)=>{refreshVariant('yellow',size)}} className={`border-2 border-yellow-300 mx-1 rounded-full bg-yellow-500 w-6 h-6 focus:outline-none ${color=='yellow'?'border-black':'border-gray-300'}`}></button>:""}
-            {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(size)? <button onClick={(e)=>{refreshVariant('green',size)}} className={`border-2 border-green-300 bg-green-500 rounded-full w-6 h-6 focus:outline-none ${color=='green'?'border-black':'border-gray-300'}`}></button>:""}
-            {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size)? <button onClick={(e)=>{refreshVariant('black',size)}} className={`border-2 border-black bg-black rounded-full w-6 h-6 focus:outline-none ${color=='black'?'border-black':'border-gray-300'}`}></button>:""}
+            {Object.keys(variants).includes('yellow') && Object.keys(variants['yellow']).includes(size)? <button onClick={(e)=>{refreshVariant('yellow',size)}} className={`border-2 border-gray-300 mx-1 rounded-full bg-yellow-500 w-6 h-6 focus:outline-none ${color=='yellow'?'border-black':'border-gray-300'}`}></button>:""}
+            {Object.keys(variants).includes('green') && Object.keys(variants['green']).includes(size)? <button onClick={(e)=>{refreshVariant('green',size)}} className={`border-2 border-gray-300 bg-green-500 rounded-full w-6 h-6 focus:outline-none ${color=='green'?'border-black':'border-gray-300'}`}></button>:""}
+            {Object.keys(variants).includes('black') && Object.keys(variants['black']).includes(size)? <button onClick={(e)=>{refreshVariant('black',size)}} className={`border-2 border-gray bg-black rounded-full w-6 h-6 focus:outline-none ${color=='black'?'border-black':'border-gray-300'}`}></button>:""}
             
           </div>
           <div class="flex ml-6 items-center">
