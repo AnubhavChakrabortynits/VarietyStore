@@ -4,6 +4,8 @@ import { useRouter } from 'next/router'
 
 import mongoose, { mongo } from 'mongoose'
 import Product from '../../modals/Product'
+import { ToastContainer,toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css';
 
 export default function post({buyNow,cart,addtoCart,removecart,clearcart,subtotal,product,variants}) {
 
@@ -14,9 +16,11 @@ export default function post({buyNow,cart,addtoCart,removecart,clearcart,subtota
    
      if(pindata?.includes(parseInt(pin))){
       setService(true)
+      notify("Yay!Delivery Is Possible To Your Area",true)
      }
      else{
       setService(false);
+      notify("Sorry!We Do Not Deliver To Your Area",false)
      }
      
     
@@ -28,6 +32,14 @@ window.location=url
   }
 
 
+  const notify = (str,truth) => {
+    if(truth==true){
+      toast.success(str,{autoClose:1000})
+    }
+    else{
+      toast.error(str,{autoClose:1000})
+    }
+  }
 
   const [pin,setPin]=useState('')
   const [service,setService]=useState(null)
@@ -37,6 +49,7 @@ window.location=url
   return (
 <>
 <section class="text-gray-600 body-font overflow-hidden">
+<ToastContainer/>
   <div class="container px-5 py-24 mx-auto">
     <div class="lg:w-4/5 mx-auto flex flex-wrap">
       <img alt="ecommerce" class="lg:w-1/2 w-full lg:h-1/2 sm:px-24 px-2 object-cover object-center rounded" src={product.img}/>
@@ -116,7 +129,8 @@ window.location=url
         </div>
         <div class="flex">
           <span class="title-font font-medium text-2xl text-gray-900">$58.00</span>
-          <button class="flex ml-5 text-white bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded md:text-xsm" onClick={()=>{addtoCart(router.query.slug,1,999,"Hoodie",size,color)}} >Add to Cart</button>
+          <button class="flex ml-5 text-white bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded md:text-xsm" onClick={()=>{addtoCart(router.query.slug,1,999,"Hoodie",size,color)
+          notify("Item Added To Cart",true)}} >Add to Cart</button>
           <button onClick={()=>{buyNow(router.query.slug,1,999,"Hoodie",size,color)}} class="flex ml-5 text-white bg-purple-500 border-0 py-2 px-4 focus:outline-none hover:bg-purple-600 rounded md:text-xsm">Buy Now</button>
           <button class="rounded-full w-10 h-10 bg-gray-200 p-0 border-0 inline-flex items-center justify-center text-gray-500 ml-4">
             <svg fill="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-5 h-5" viewBox="0 0 24 24">
@@ -127,7 +141,7 @@ window.location=url
 
         <div className="pin mt-6 flex space-x-2 test-sm">
           <input value={pin} onChange={(e)=>{setPin(e.target.value)}} type="text" className='px-2 border-2 border-purple-100 rounded-md' placeholder='pincode' />
-          <button className='flex ml-5 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded' onClick={checkservice}>check</button>
+          <button className='flex ml-5 text-white bg-purple-500 border-0 py-2 px-6 focus:outline-none hover:bg-purple-600 rounded' onClick={()=>{checkservice()}}>check</button>
         </div>
         <div className={`pinmessage text-sm ${service==true?"text-green-400":"text-red-400"} `}>
         {service==true?'Yay,Delivery is available for this pincode':'Sorry,We do not deliver to this pincode'}
