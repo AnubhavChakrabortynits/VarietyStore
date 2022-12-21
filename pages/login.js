@@ -25,6 +25,7 @@ export default function login() {
     let response=await data.json()
     const val=response.success || response.error
     if(response.success){
+     localStorage.setItem('token',response.token)
     toast.success(val, {
       position: "top-right",
       autoClose: 2000,
