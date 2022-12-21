@@ -3,9 +3,11 @@ import { useState } from 'react'
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
+import { useRouter } from 'next/router'
 
 
 export default function signup() {
+  const router=useRouter()
   const [name,setName]=useState()
   const [pass,setPass]=useState()
   const [email,setEmail]=useState()
@@ -27,7 +29,7 @@ export default function signup() {
     if(response.success){
     toast.success(val, {
       position: "top-right",
-      autoClose: 5000,
+      autoClose: 2000,
       hideProgressBar: false,
       closeOnClick: true,
       pauseOnHover: true,
@@ -35,9 +37,10 @@ export default function signup() {
       progress: undefined,
       theme: "light",
       });
+     setTimeout(()=>{router.push('/login')},200)
     }
     else{
-      toast.error(val, {
+      toast.error('Please Enter valid Data', {
         position: "top-right",
         autoClose: 5000,
         hideProgressBar: false,
@@ -46,7 +49,7 @@ export default function signup() {
         draggable: true,
         progress: undefined,
         theme: "light",
-        });
+        })
     }
     console.log(response)
     setName('')
