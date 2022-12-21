@@ -37,7 +37,7 @@ export default function signup() {
       progress: undefined,
       theme: "light",
       });
-     setTimeout(()=>{router.push('/login')},200)
+     setTimeout(()=>{router.push('/login')},2000)
     }
     else{
       toast.error('Please Enter valid Data', {
