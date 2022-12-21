@@ -1,9 +1,75 @@
 import React from 'react'
+import { useState } from 'react'
 import Link from 'next/link'
+import { ToastContainer,toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
+
 
 export default function signup() {
+  const [name,setName]=useState()
+  const [pass,setPass]=useState()
+  const [email,setEmail]=useState()
+
+  const handleSubmit=async(e)=>{
+    e.preventDefault()
+ const formBody={name: name,email: email,password: pass}
+    const data=await fetch(`http://localhost:3000/api/signup`, {
+      method: 'POST',
+      headers: {
+        "Content-type": "application/json"
+      },
+   
+      body: JSON.stringify(formBody)
+    })
+    
+    let response=await data.json()
+    const val=response.success || response.error
+    if(response.success){
+    toast.success(val, {
+      position: "top-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: true,
+      pauseOnHover: true,
+      draggable: true,
+      progress: undefined,
+      theme: "light",
+      });
+    }
+    else{
+      toast.error(val, {
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        });
+    }
+    console.log(response)
+    setName('')
+    setEmail('')
+    setPass('')
+  }
   return (
     <div className='mb-4'>
+
+<ToastContainer
+position="top-right"
+autoClose={5000}
+hideProgressBar={false}
+newestOnTop={false}
+closeOnClick
+rtl={false}
+pauseOnFocusLoss
+draggable
+pauseOnHover
+theme="light"
+/>
+{/* Same as */}
+<ToastContainer />
       <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
   <div class="w-full max-w-md space-y-8">
     <div>
@@ -14,20 +80,20 @@ export default function signup() {
       <Link href={'/login'}><a class="font-medium text-purple-600 hover:text-purple-500"> Login</a></Link> 
       </p>
     </div>
-    <form class="mt-8 space-y-6" action="#" method="POST">
+    <form onSubmit={handleSubmit} class="mt-8 space-y-6" method="POST">
       <input type="hidden" name="remember" value="true"/>
       <div class="-space-y-px rounded-md shadow-sm">
         <div>
         <div>
           <label for="name" class="sr-only">Name</label>
-          <input id="name" name="name" type="text" autocomplete="current-password" required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-purple-500 focus:outline-none focus:ring-purple-500 sm:text-sm" placeholder="Name"/>
+          <input id="name" name="name" type="text" value={name} onChange={(e)=>{setName(e.target.value)}} autocomplete="current-password" required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-purple-500 focus:outline-none focus:ring-purple-500 sm:text-sm" placeholder="Name"/>
         </div>
           <label for="email-address" class="sr-only">Email address</label>
-          <input id="email-address" name="email" type="email" autocomplete="email" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-purple-500 focus:outline-none focus:ring-purple-500 sm:text-sm" placeholder="Email address"/>
+          <input id="email-address" name="email" value={email} onChange={(e)=>{setEmail(e.target.value)}} type="email" autocomplete="email" required class="relative block w-full appearance-none rounded-none rounded-t-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-purple-500 focus:outline-none focus:ring-purple-500 sm:text-sm" placeholder="Email address"/>
         </div>
         <div>
           <label for="password" class="sr-only">Password</label>
-          <input id="password" name="password" type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-purple-500 focus:outline-none focus:ring-purple-500 sm:text-sm" placeholder="Password"/>
+          <input id="password" value={pass} onChange={(e)=>{setPass(e.target.value)}} name="password" type="password" autocomplete="current-password" required class="relative block w-full appearance-none rounded-none rounded-b-md border border-gray-300 px-3 py-2 text-gray-900 placeholder-gray-500 focus:z-10 focus:border-purple-500 focus:outline-none focus:ring-purple-500 sm:text-sm" placeholder="Password"/>
         </div>
         
       </div>
@@ -35,6 +101,7 @@ export default function signup() {
      
 
       <div>
+
         <button type="submit" class="group relative flex w-full justify-center rounded-md border border-transparent bg-purple-600 py-2 px-4 text-sm font-medium text-white hover:bg-purple-700 focus:outline-none focus:ring-2 focus:ring-purple-500 focus:ring-offset-2">
           <span class="absolute inset-y-0 left-0 flex items-center pl-3">
          
