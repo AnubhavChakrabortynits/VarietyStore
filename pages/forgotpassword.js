@@ -1,7 +1,18 @@
-import React from 'react'
+import React,{useEffect} from 'react'
 import Link from 'next/link'
+import { useRouter } from 'next/router'
+
+
+
 
 export default function forgotpassword() {
+
+  const router =useRouter()
+useEffect(() => {
+  if(localStorage.getItem('token')){
+   router.push('/')
+  }
+   })
   return (
     <div className='mb-4'>
       <div class="flex min-h-full items-center justify-center py-12 px-4 sm:px-6 lg:px-8">

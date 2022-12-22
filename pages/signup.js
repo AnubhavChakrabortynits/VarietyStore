@@ -1,5 +1,5 @@
 import React from 'react'
-import { useState } from 'react'
+import { useState,useEffect } from 'react'
 import Link from 'next/link'
 import { ToastContainer,toast } from 'react-toastify'
 import 'react-toastify/dist/ReactToastify.css'
@@ -56,6 +56,11 @@ export default function signup() {
     setEmail('')
     setPass('')
   }
+  useEffect(() => {
+    if(localStorage.getItem('token')){
+     router.push('/')
+    }
+     })
   return (
     <div className='mb-4'>
 
