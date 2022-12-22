@@ -1,4 +1,4 @@
-import React, { useRef} from 'react'
+import React, { useRef,useState} from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
@@ -8,8 +8,8 @@ import {MdAccountCircle} from 'react-icons/md'
 
 
 
-export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
-
+export default function Navbar({user,key,setkey,setuser,cart,addtoCart,removecart,clearcart,subtotal}) {
+  const [dropdown,setDropdown]=useState(false)
   
   const toggleCart=()=>{
 
@@ -21,6 +21,22 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
         ref.current.classList.remove('translate-x-0')
       }
 
+    }
+
+    const toggleDropdown=()=>{
+         if(dropdown===true){
+         setDropdown(false)
+         }
+         else if(dropdown===false){
+         setDropdown(true)
+         }
+    }
+
+
+    const logout=()=>{
+      localStorage.removeItem('token')
+      setuser({value: null})
+      setkey(Math.random())
     }
  
 
@@ -40,11 +56,25 @@ export default function Navbar({cart,addtoCart,removecart,clearcart,subtotal}) {
       </ul>
     </div>
 
-    <div className="cart absolute right-0 mx-5 top-4 cursor-pointer flex gap-2" >
-<Link href={'/login'}><a> <MdAccountCircle className='md:text-3xl text-xl'/></a></Link>   
+    <div className="cart absolute right-0 mx-5 top-4 cursor-pointer flex items-center gap-2" >
+ {user.value && <MdAccountCircle onClick={toggleDropdown} className='md:text-3xl text-xl'/>}
+
+ 
+{user.value===null ? <Link href={'/login'}><button className='bg-violet-500 hover:text-black hover:bg-violet-300 px-4 py-2 text-sm text-bold rounded-md font-bold text-white'>Login</button></Link> : ''}   
 
      <AiOutlineShoppingCart className='md:text-3xl text-xl' onClick={toggleCart} />
-    </div>
+
+    {dropdown && <div className='absolute right-10 top-8 rounded-md px-5 py-2 w-40 bg-violet-300 '>
+      <ul>
+       <li className='py-2 text-sm font-[600] hover:text-white hover:bg-violet-700 text-center rounded-md '><Link href={'/account'}><a>My Account</a></Link></li>
+       <li className='py-2 text-sm font-[600] hover:text-white hover:bg-violet-700 text-center rounded-md'><Link href={'/orders'}><a>My Orders</a></Link></li>
+       <li className='py-2 text-sm font-[600] hover:text-white hover:bg-violet-700 text-center rounded-md' onClick={logout}>Logout</li>
+
+        
+
+      </ul>
+     </div> }
+    </div> 
 
 <div ref={ref} style={{minHeight:"100vh"}} className=" w-72 overflow-y-scroll sidebar bg-purple-100 absolute top-0 right-0 cursor-pointer text-2xl transform transition-transform translate-x-full p-10">
 <h2 className="font-bold text-xl text-center">Shopping Cart</h2>
