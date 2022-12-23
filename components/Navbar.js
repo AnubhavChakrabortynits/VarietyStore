@@ -5,11 +5,13 @@ import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {AiFillCloseCircle,AiFillPlusCircle,AiFillMinusCircle,AiFillDelete} from 'react-icons/ai';
 import {BsBagCheckFill} from 'react-icons/bs'
 import {MdAccountCircle} from 'react-icons/md'
+import { useRouter } from 'next/router';
 
 
 
 export default function Navbar({user,key,setkey,setuser,cart,addtoCart,removecart,clearcart,subtotal}) {
   const [dropdown,setDropdown]=useState(false)
+  const router=useRouter()
   
   const toggleCart=()=>{
 
@@ -37,6 +39,7 @@ export default function Navbar({user,key,setkey,setuser,cart,addtoCart,removecar
       localStorage.removeItem('token')
       setuser({value: null})
       setkey(Math.random())
+      router.push('/login')
     }
  
 
@@ -66,7 +69,7 @@ export default function Navbar({user,key,setkey,setuser,cart,addtoCart,removecar
 
     {dropdown && <div className='absolute right-10 top-8 rounded-md px-5 py-2 w-40 bg-violet-300 '>
       <ul>
-       <li className='py-2 text-sm font-[600] hover:text-white hover:bg-violet-700 text-center rounded-md '><Link href={'/account'}><a>My Account</a></Link></li>
+       <li className='py-2 text-sm font-[600] hover:text-white hover:bg-violet-700 text-center rounded-md '><Link href={'/myaccount'}><a>My Account</a></Link></li>
        <li className='py-2 text-sm font-[600] hover:text-white hover:bg-violet-700 text-center rounded-md'><Link href={'/orders'}><a>My Orders</a></Link></li>
        <li className='py-2 text-sm font-[600] hover:text-white hover:bg-violet-700 text-center rounded-md' onClick={logout}>Logout</li>
 

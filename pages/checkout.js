@@ -3,10 +3,25 @@ import Link from 'next/link'
 import {AiOutlineShoppingCart} from 'react-icons/ai'
 import {AiFillCloseCircle,AiFillPlusCircle,AiFillMinusCircle,AiFillDelete} from 'react-icons/ai';
 import {BsBagCheckFill} from 'react-icons/bs'
-
+import { useEffect } from 'react';
+import { useRouter } from 'next/router';
+import Head from 'next/head';
 export default function checkout({cart,clearcart,addtoCart,subtotal,removecart}) {
+
+  const router=useRouter()
+
+
+
+  useEffect(()=>{
+    if(!localStorage.getItem('token')){
+      router.push('/login')
+    }
+  })
   return (
     <div className='container  mx-auto mb-6'>
+    <Head>
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0"/>
+    </Head>
       <div className='font-bold text-xl text-center my-4 '>Checkout</div>
       <div className="text-xl mb-4 w-[90vw] mx-auto font-bold">1.Delivery Details</div>
       <div className='flex mb-6 w-[90vw] mx-auto'>

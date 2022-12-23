@@ -103,7 +103,7 @@ useEffect(()=>{
   return <>
    <LoadingBar loaderSpeed={200} waitingTime={300} color={'#F108F9'} progress={progress} onLoaderFinished={() => setProgress(0) } />
 
-{key && <Navbar key={key} setkey={setKey} setuser={setUser} user={user} cart={cart} addtoCart={addtoCart} removecart={removeCartItem} clearcart={clearCart} subtotal={subTotal} />}
+{ <Navbar key={key} setkey={setKey} setuser={setUser} user={user} cart={cart} addtoCart={addtoCart} removecart={removeCartItem} clearcart={clearCart} subtotal={subTotal} />}
 <Component buyNow={buyNow} cart={cart} addtoCart={addtoCart} removecart={removeCartItem} clearcart={clearCart} subtotal={subTotal} {...pageProps} />
 <Footer cart={cart} addtoCart={addtoCart} removecart={removeCartItem} clearcart={clearCart} subtotal={subTotal}/>
   </>
