@@ -103,12 +103,6 @@ export default function Navbar({user,key,setkey,setuser,cart,addtoCart,removecar
       </li>
       })
       }
-    
-    
-    
-   
-   
-
     </ol>
     <div className="total font-semibold my-1 text-sm text-center">SubTotal: {subtotal}$</div>
     <div className="flex justify-center items-center text-md gap-2">
