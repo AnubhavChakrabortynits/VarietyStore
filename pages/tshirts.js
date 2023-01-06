@@ -10,10 +10,10 @@ function tshirts({product}) {
   <div class="container px-5 py-24 mx-auto">
     <div class="flex flex-wrap -m-6 lg:space-x-6 justify-center items-center">
 
-  
+  {console.log(Object.keys(product))}
 
     {Object.keys(product).map((item)=>{
-      return <Link href={'/'}>
+      return <Link href={`/product/${product[item].slug}?slug=${product[item].slug}`}>
       <div class="xl:w-[22%] lg:w-[30%] md:w-1/2 sm:w-1/2 p-4 w-full shadow-lg" style={{cursor:"pointer"}}>
   
         <a class="block relative  rounded overflow-hidden">

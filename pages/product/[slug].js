@@ -163,6 +163,7 @@ export async function getServerSideProps(context){
 }
 
 let product=await Product.findOne({slug: context.query.slug})
+console.log(context.query.slug)
 let variants=await Product.find({title: product.title,category:product.category})
 let colorSizeSlug={}
 for(let item of variants){

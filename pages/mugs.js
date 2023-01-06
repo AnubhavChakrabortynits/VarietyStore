@@ -13,7 +13,7 @@ export default function mugs({product}) {
 
 
   {Object.keys(product).map((item)=>{
-    return <Link href={'/'}>
+    return <Link href={`/product/${product[item].slug}?slug=${product[item].slug}`}>
     <div class="xl:w-[22%] lg:w-[30%] md:w-1/2 sm:w-1/2 p-4 w-full shadow-lg" style={{cursor:"pointer"}}>
 
       <a class="block relative  rounded overflow-hidden">
